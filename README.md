@@ -1,2 +1,2 @@
 # avators-vue
-@outpacelabs/avators 的 Vue 版本
+@outpacelabs/avatars 的 Vue 版本

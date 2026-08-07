@@ -4,6 +4,10 @@
   "description": "Vue component for generative gradient avatars.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shenghui-Waa/avatars-vue"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/types/index.d.ts",

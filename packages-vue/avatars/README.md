@@ -2,18 +2,19 @@
 
 Generative gradient avatars for Vue 3. Every seed (string or number) renders a unique mesh gradient or a crisp ordered dither — deterministic, no stored images, no network.
 
-## Quick start
+## Install
 
 ```bash
-npm install
-npm run dev
+npm i @tsyanst/avatars-vue
 ```
 
-## Component
+Requires Vue >= 3.
+
+## Usage
 
 ```vue
 <script setup lang="ts">
-import { GradientAvatar } from './index'
+import { GradientAvatar } from '@tsyanst/avatars-vue'
 </script>
 
 <template>
@@ -21,18 +22,20 @@ import { GradientAvatar } from './index'
 </template>
 ```
 
-### Props
+Give it any string or number (user id, email, username). Same seed always yields the same gradient.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `seed` | `string \| number` | required | Any value; each unique seed is a unique gradient |
-| `size` | `number` | `32` | Rendered size in pixels |
-| `pattern` | `"mesh" \| "dither"` | `"mesh"` | Mesh is the soft gradient; dither is a crisp ordered dither |
-| `radius` | `number \| string` | `"9999px"` | Corner radius. Number in px, string as any CSS value |
-| `colors` | `string[]` | — | Custom hex palette instead of seed-derived harmony |
-| `p3` | `boolean` | `false` | Render in Display P3 wide-gamut color space |
+## Props
 
-### Examples
+| Prop     | Type                      | Default     | Description                                    |
+|----------|---------------------------|-------------|------------------------------------------------|
+| `seed`   | `string \| number`        | required    | Any value; each unique seed is a unique gradient |
+| `size`   | `number`                  | `32`        | Rendered size in pixels                        |
+| `pattern`| `"mesh" \| "dither"`     | `"mesh"`    | Mesh for soft gradient; dither for crisp ordered dither |
+| `radius` | `number \| string`        | `"9999px"`  | Corner radius. Number in px, string as CSS value |
+| `colors` | `string[]`                | —           | Custom hex palette instead of seed-derived harmony |
+| `p3`     | `boolean`                 | `false`     | Render in Display P3 wide-gamut color space     |
+
+## Examples
 
 ```vue
 <!-- Circle (default) -->
@@ -44,11 +47,15 @@ import { GradientAvatar } from './index'
 <!-- Rounded square -->
 <GradientAvatar seed="carol" :size="96" :radius="16" />
 
-<!-- Dither pattern (crisp, no blur) -->
+<!-- Dither pattern -->
 <GradientAvatar seed="dave" :size="96" pattern="dither" />
 
-<!-- Custom colors -->
-<GradientAvatar :seed="42" :size="96" :colors="['#4f46e5', '#06b6d4', '#ec4899']" />
+<!-- Custom brand colors -->
+<GradientAvatar
+  :seed="42"
+  :size="96"
+  :colors="['#4f46e5', '#06b6d4', '#ec4899']"
+/>
 
 <!-- P3 wide gamut -->
 <GradientAvatar seed="eve" :size="96" :p3="true" />
@@ -56,7 +63,7 @@ import { GradientAvatar } from './index'
 
 ## Engine helpers
 
-Pure helpers exported from `engine.ts`, no Vue dependency:
+Framework-agnostic engine also exported:
 
 ```ts
 import {
@@ -68,26 +75,14 @@ import {
   drawDither,
   seedFromString,
   toSeed,
-} from './index'
+} from '@tsyanst/avatars-vue'
 
 // 512x512 PNG data URL
 const src = gradientToDataURL('jane@example.com', { size: 512 })
 
 // Colors and harmony behind a seed
 const { colors, harmony } = generatePalette('jane@example.com')
-
-// Draw directly onto a canvas
-const canvas = document.querySelector('canvas')
-renderGradient(canvas, 'studio', { size: 256, p3: true })
 ```
-
-## Build
-
-```bash
-npm run build
-```
-
-Outputs `dist/index.js` (ESM) and `dist/index.cjs` (CJS) with `vue` as external.
 
 ## License
 

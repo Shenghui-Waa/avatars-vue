@@ -1,9 +1,9 @@
 # avators-vue
 
-基于 [`@outpacelabs/avatars`](https://github.com/outpacelabs/avatars.git) 修改后的 Vue 版本
+基于 [`@outpacelabs/avatars`](https://github.com/outpacelabs/avatars.git) 重构修改后的 Vue 版本
 
 ## React 原始版本
-- 位于 `packages-react\avatars`
+- 位于 `packages-react/avatars`
 - [**`README`↗**](packages-react/avatars/README.md)
 - 快速开始
   ```bash
@@ -17,8 +17,8 @@
   }
   ```
 
-## Vue 版本
-- 位于 `packages-vue\avatars`
+## Vue 重构版本
+- 位于 `packages-vue/avatars`
 - [**`README`↗**](packages-vue/avatars/README.md)
 - 快速开始
   ```bash
@@ -34,4 +34,5 @@
   </template>
   ```
 
-
+## ⚖ License
+`MIT.` By Tsyanst. Use For Free.
